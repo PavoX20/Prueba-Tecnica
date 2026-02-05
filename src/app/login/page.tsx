@@ -37,7 +37,7 @@ export default function LoginPage() {
         }
       }
     } catch (err) {
-      toast.error('Ocurrió un error inesperado')
+
     } finally {
       setLoading(false) 
     }
