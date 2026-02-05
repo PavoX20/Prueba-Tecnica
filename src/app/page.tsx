@@ -29,12 +29,12 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-[var(--background)]">
-      {/* Header */}
+      {}
       <header className="bg-white/80 backdrop-blur-md border-b border-blue-200/50 px-6 py-4 flex justify-between items-center sticky top-0 z-10">
         <h1 className="text-xl font-bold text-blue-900 flex items-center gap-2">
           Sumak Prueba Técnica
         </h1>
-        
+
         <button 
           onClick={handleLogout}
           className="flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-red-600 transition-colors bg-white px-3 py-1.5 rounded-lg border border-slate-200 hover:border-red-200 shadow-sm"
@@ -47,17 +47,16 @@ export default function DashboardPage() {
       <main className="max-w-6xl mx-auto px-6 py-8">
         <div className="mb-8">
           <h2 className="text-3xl font-bold text-slate-800 mb-6">Gestión de Productos</h2>
-          
-          {/* BOTÓN CORREGIDO: 
-             Siempre fondo blanco (bg-white), texto azul (text-blue-600) y borde azul (border-blue-600).
-          */}
+
+          {}
           <button
             onClick={() => setSelectedProduct(null)}
             className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold transition-all shadow-sm border-2
               bg-white text-blue-600 border-blue-600 hover:bg-blue-50
               ${
                 selectedProduct === null
-                ? 'ring-2 ring-blue-300 ring-offset-2 shadow-md' // Estilo extra solo para indicar que está activo, pero manteniendo blanco
+                ? 'ring-2 ring-blue-300 ring-offset-2 shadow-md' 
+
                 : ''
               }`}
           >
@@ -67,7 +66,7 @@ export default function DashboardPage() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
+
           <div className="lg:col-span-7">
             <div className="mb-3 flex justify-between items-end px-1">
               <span className="text-sm font-bold text-blue-900/70 uppercase tracking-wider">
@@ -77,7 +76,7 @@ export default function DashboardPage() {
                 {products.length} items
               </span>
             </div>
-            
+
             <ProductList
               products={products}
               selectedId={selectedProduct?.id || null}

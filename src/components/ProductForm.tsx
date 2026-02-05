@@ -11,7 +11,7 @@ interface Props {
 }
 
 export function ProductForm({ selectedProduct, onSubmit, isSaving }: Props) {
-  // Estado local flexible: price es string para permitir borrar el "0"
+
   const [form, setForm] = useState({
     name: '',
     description: '',
@@ -26,22 +26,22 @@ export function ProductForm({ selectedProduct, onSubmit, isSaving }: Props) {
         price: selectedProduct.price,
       })
     } else {
-      // Al crear nuevo, precio empieza vacío para que se vea el placeholder
+
       setForm({ name: '', description: '', price: '' })
     }
   }, [selectedProduct])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Convertimos a número solo al momento de guardar
+
     onSubmit({
       name: form.name,
       description: form.description,
-      price: Number(form.price) || 0, // Si está vacío, se guarda como 0
+      price: Number(form.price) || 0, 
+
     })
   }
 
-  // Clases comunes para los inputs
   const inputClass = "w-full rounded-lg border-slate-300 border px-4 py-2.5 text-sm text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400 bg-slate-50 focus:bg-white"
 
   return (
@@ -93,7 +93,7 @@ export function ProductForm({ selectedProduct, onSubmit, isSaving }: Props) {
           </div>
         </div>
 
-        {/* Botón Save */}
+        {}
         <button
           type="submit"
           disabled={isSaving}

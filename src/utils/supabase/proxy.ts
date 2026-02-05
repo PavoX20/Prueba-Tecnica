@@ -29,21 +29,16 @@ export async function updateSession(request: NextRequest) {
     }
   )
 
-  // Obtenemos el usuario para validar sesión
   const {
     data: { user },
   } = await supabase.auth.getUser()
 
-  // --- REGLAS DE PROTECCIÓN DE RUTAS ---
-
-  // 1. Si NO hay usuario y NO estamos en login, redirigir a login
   if (!user && !request.nextUrl.pathname.startsWith('/login')) {
     const url = request.nextUrl.clone()
     url.pathname = '/login'
     return NextResponse.redirect(url)
   }
 
-  // 2. Si HAY usuario y estamos en login, redirigir al home (dashboard)
   if (user && request.nextUrl.pathname.startsWith('/login')) {
     const url = request.nextUrl.clone()
     url.pathname = '/'

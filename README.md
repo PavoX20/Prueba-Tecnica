@@ -1,52 +1,52 @@
-# Sumak Product Manager - Prueba Técnica
+# Sumak Product Manager - Technical Test
 
-Sistema de gestión de productos (CRUD) desarrollado con **Next.js** y **Supabase**. Enfocado en la seguridad, la experiencia de usuario y una arquitectura limpia.
+Product management system (CRUD) developed with **Next.js** and **Supabase**. Focused on security, user experience, and clean architecture.
 
-## Tecnologías
+## Technologies
 
 * **Core:** Next.js 14 (App Router), React, TypeScript.
 * **Backend:** Supabase (PostgreSQL, Auth, Row Level Security).
-* **Estilos:** Tailwind CSS (Diseño responsivo y custom theming).
-* **UI/UX:** Sonner (Notificaciones), Lucide React (Iconografía).
+* **Styles:** Tailwind CSS (Responsive design and custom theming).
+* **UI/UX:** Sonner (Notifications), Lucide React (Iconography).
 
-## Instalación y Configuración
+## Installation and Setup
 
-1.  **Clonar repositorio e instalar dependencias:**
+1.  **Clone repository and install dependencies:**
     ```bash
-    git clone https://github.com/PavoX20/Prueba-Tecnica
+    git clone [https://github.com/PavoX20/Prueba-Tecnica](https://github.com/PavoX20/Prueba-Tecnica)
     cd prueba-sumak
     pnpm install
     ```
 
-2.  **Configurar Variables de Entorno:**
-    Renombrar `.env.example` a `.env` y añadir las credenciales de Supabase:
+2.  **Configure Environment Variables:**
+    Rename `.env.example` to `.env` and add your Supabase credentials:
     ```env
-    NEXT_PUBLIC_SUPABASE_URL=https://udzkebem.supabase.co
+    NEXT_PUBLIC_SUPABASE_URL=[https://udzkebem.supabase.co](https://udzkebem.supabase.co)
     NEXT_PUBLIC_SUPABASE_ANON_KEY=sb_publishable...
     ```
 
-3.  **Base de Datos:**
-    Ejecutar el script SQL proporcionado en el editor de Supabase para crear la tabla `products` y habilitar las políticas de seguridad (RLS).
+3.  **Database:**
+    Run the provided SQL script in the Supabase SQL Editor to create the `products` table and enable Row Level Security (RLS) policies.
 
-4.  **Ejecutar:**
+4.  **Run:**
     ```bash
     pnpm dev
     ```
 
-## Decisiones de Arquitectura
+## Architectural Decisions
 
-### 1. Fetching de Datos: Client-Side Rendering (CSR)
-Se optó por **CSR** mediante Custom Hooks (`useProducts`) en lugar de Server Components para la vista principal.
-* **Justificación:** Al ser un Dashboard administrativo (SPA), se priorizó la **interactividad inmediata**. Esto permite crear, editar y eliminar ítems sin recargas de página (Server Roundtrips).
+### 1. Data Fetching: Client-Side Rendering (CSR)
+**CSR** was chosen using Custom Hooks (`useProducts`) instead of Server Components for the main view.
+* **Justification:** Since this is an administrative Dashboard (SPA), **immediate interactivity** was prioritized. This allows creating, editing, and deleting items without page reloads (Server Roundtrips).
 
-### 2. Gestión de Estado: `useState`
-Se utilizó `useState` local encapsulado en hooks.
-* **Justificación:** Se aplicó el principio **KISS (Keep It Simple)**. El estado de la lista y los formularios es local a la vista principal. Implementar *Context API* o *Zustand* habría introducido complejidad.
+### 2. State Management: `useState`
+Local `useState` encapsulated in hooks was used.
+* **Justification:** The **KISS (Keep It Simple)** principle was applied. The list and form state is local to the main view. Implementing *Context API* or *Zustand* would have introduced unnecessary complexity.
 
-### 3. Seguridad: Row Level Security (RLS)
-Más allá de la protección de rutas en el Frontend, se implementó seguridad a nivel de base de datos.
-* **Justificación:** Garantiza que las reglas de negocio sean inmutables. Incluso si el cliente es vulnerado, la base de datos rechaza cualquier operación (DELETE/UPDATE) que no provenga del propietario del registro.
+### 3. Security: Row Level Security (RLS)
+Beyond frontend route protection, security was implemented at the database level.
+* **Justification:** This ensures business rules are immutable. Even if the client is compromised, the database rejects any operation (DELETE/UPDATE) that does not come from the record owner.
 
 ### 4. Testing
-* **Estado:** No incluido en esta entrega.
-* **Justificación:** Se priorizó la entrega de una funcionalidad completa (Full CRUD), se intentó priorizar la entrega pronta del proyecto. En un entorno productivo, se recomienda añadir tests unitarios para la lógica de los hooks.
+* **Status:** Not included in this delivery.
+* **Justification:** Priority was given to delivering complete functionality (Full CRUD) and ensuring a timely project delivery. In a production environment, adding unit tests for the hooks logic is recommended.

@@ -8,10 +8,8 @@ export function useProducts() {
   const [loading, setLoading] = useState(false)
   const supabase = createClient()
 
-  // Cargar productos
   const fetchProducts = useCallback(async () => {
-    // Sin loading general para no parpadear toda la pantalla al recargar,
-    // solo al inicio si quisieras.
+
     const { data, error } = await supabase
       .from('products')
       .select('*')
@@ -24,7 +22,6 @@ export function useProducts() {
     }
   }, [supabase])
 
-  // Crear o Actualizar
   const upsertProduct = async (
     product: ProductInput,
     id?: string
@@ -39,14 +36,14 @@ export function useProducts() {
 
       let error
       if (id) {
-        // Actualizar
+
         const { error: updateError } = await supabase
           .from('products')
           .update(product)
           .eq('id', id)
         error = updateError
       } else {
-        // Crear
+
         const { error: insertError } = await supabase
           .from('products')
           .insert([{ ...product, user_id: user.id }])
@@ -56,7 +53,8 @@ export function useProducts() {
       if (error) throw error
 
       toast.success(id ? 'Producto actualizado' : 'Producto creado')
-      await fetchProducts() // Recargamos la lista para que salga el nuevo arriba
+      await fetchProducts() 
+
       return true
     } catch (e) {
       toast.error('Error al guardar el producto')
@@ -66,7 +64,6 @@ export function useProducts() {
     }
   }
 
-  // Eliminar
   const deleteProduct = async (id: string) => {
     const { error } = await supabase.from('products').delete().eq('id', id)
 
@@ -74,12 +71,11 @@ export function useProducts() {
       toast.error('Error al eliminar')
     } else {
       toast.success('Producto eliminado')
-      // Actualización optimista o recarga
+
       setProducts((prev) => prev.filter((p) => p.id !== id))
     }
   }
 
-  // Cargar al montar
   useEffect(() => {
     fetchProducts()
   }, [fetchProducts])

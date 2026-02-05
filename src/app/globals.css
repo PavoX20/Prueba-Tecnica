@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  /* Color exacto RGB(222, 232, 241) -> Hex: #dee8f1 */
+
   --background: #dee8f1;
   --foreground: #0f172a;
 }
@@ -13,9 +13,6 @@
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
-/* --- HE BORRADO LA SECCIÓN DARK MODE DE AQUÍ --- */
-/* Esto asegura que el fondo sea siempre celeste, incluso si tu Mac está en modo oscuro */
-
 body {
   background: var(--background);
   color: var(--foreground);
@@ -24,7 +21,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Scrollbar Personalizado (Azul) */
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -41,4 +37,12 @@ body {
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #60a5fa;
+}
+
+button, 
+a, 
+input[type="submit"], 
+input[type="button"],
+[role="button"] {
+  cursor: pointer !important;
 }

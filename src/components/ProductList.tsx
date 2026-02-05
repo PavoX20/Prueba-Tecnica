@@ -35,8 +35,10 @@ export function ProductList({
           className={`group relative flex cursor-pointer flex-col justify-between rounded-xl border p-5 transition-all duration-200
             ${
               selectedId === product.id
-                ? 'bg-blue-50 border-blue-500 shadow-md ring-1 ring-blue-500' // Seleccionado: Azul claro + Borde fuerte
-                : 'bg-white border-slate-200 hover:border-blue-300 hover:shadow-sm' // Normal
+                ? 'bg-blue-50 border-blue-500 shadow-md ring-1 ring-blue-500' 
+
+                : 'bg-white border-slate-200 hover:border-blue-300 hover:shadow-sm' 
+
             }`}
         >
           <div className="flex justify-between items-start">
@@ -50,7 +52,7 @@ export function ProductList({
                 ${product.price.toFixed(2)}
               </p>
             </div>
-            
+
             <button
               onClick={(e) => {
                 e.stopPropagation()
@@ -62,7 +64,7 @@ export function ProductList({
               <Trash2 size={18} />
             </button>
           </div>
-          
+
           <p className="mt-3 text-sm text-slate-600 line-clamp-2 leading-relaxed">
             {product.description || <span className="italic text-slate-400">Sin descripción</span>}
           </p>

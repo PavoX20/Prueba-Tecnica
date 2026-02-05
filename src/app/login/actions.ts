@@ -16,8 +16,9 @@ export async function login(formData: FormData) {
   })
 
   if (error) {
-    // Retornamos el error para que el cliente lo muestre con Sonner
-    return { error: 'Credenciales incorrectas o usuario no encontrado.' }
+    // AQUÍ PERSONALIZAMOS EL MENSAJE
+    // Supabase devuelve error genérico por seguridad, pero tú pediste este mensaje específico:
+    return { error: 'El usuario no está registrado o la contraseña es incorrecta.' }
   }
 
   revalidatePath('/', 'layout')
@@ -41,4 +42,11 @@ export async function signup(formData: FormData) {
 
   revalidatePath('/', 'layout')
   redirect('/')
+}
+
+export async function logout() {
+  const supabase = await createClient()
+  await supabase.auth.signOut()
+  revalidatePath('/', 'layout')
+  redirect('/login')
 }
