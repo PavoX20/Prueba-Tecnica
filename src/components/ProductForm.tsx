@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react' 
+
 import { Product, ProductInput } from '@/types'
 import { Loader2, Save } from 'lucide-react'
 
@@ -13,32 +14,17 @@ interface Props {
 export function ProductForm({ selectedProduct, onSubmit, isSaving }: Props) {
 
   const [form, setForm] = useState({
-    name: '',
-    description: '',
-    price: '' as string | number, 
+    name: selectedProduct?.name || '',
+    description: selectedProduct?.description || '',
+    price: selectedProduct?.price || '' as string | number,
   })
-
-  useEffect(() => {
-    if (selectedProduct) {
-      setForm({
-        name: selectedProduct.name,
-        description: selectedProduct.description || '',
-        price: selectedProduct.price,
-      })
-    } else {
-
-      setForm({ name: '', description: '', price: '' })
-    }
-  }, [selectedProduct])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-
     onSubmit({
       name: form.name,
       description: form.description,
-      price: Number(form.price) || 0, 
-
+      price: Number(form.price) || 0,
     })
   }
 
@@ -81,7 +67,7 @@ export function ProductForm({ selectedProduct, onSubmit, isSaving }: Props) {
           <div className="relative">
             <span className="absolute left-4 top-2.5 text-slate-500 font-medium">$</span>
             <input
-              type="number" 
+              type="number"
               required
               min="0"
               step="0.01"
@@ -93,7 +79,6 @@ export function ProductForm({ selectedProduct, onSubmit, isSaving }: Props) {
           </div>
         </div>
 
-        {}
         <button
           type="submit"
           disabled={isSaving}

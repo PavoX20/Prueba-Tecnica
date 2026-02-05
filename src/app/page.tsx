@@ -28,7 +28,7 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[var(--background)]">
+    <div className="min-h-screen bg-background">
       {}
       <header className="bg-white/80 backdrop-blur-md border-b border-blue-200/50 px-6 py-4 flex justify-between items-center sticky top-0 z-10">
         <h1 className="text-xl font-bold text-blue-900 flex items-center gap-2">
@@ -92,6 +92,7 @@ export default function DashboardPage() {
               </span>
             </div>
             <ProductForm
+              key={selectedProduct?.id ?? 'new'} 
               selectedProduct={selectedProduct}
               onSubmit={handleFormSubmit}
               isSaving={loading}
