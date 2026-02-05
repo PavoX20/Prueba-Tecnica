@@ -2,6 +2,12 @@
 
 Product management system (CRUD) developed with **Next.js** and **Supabase**. Focused on security, user experience, and clean architecture.
 
+## Try Me
+
+You can explore the live application deployed on Vercel here:
+
+ **[https://prueba-tecnica-six-phi.vercel.app](https://prueba-tecnica-six-phi.vercel.app)**
+
 ## Technologies
 
 * **Core:** Next.js 14 (App Router), React, TypeScript.

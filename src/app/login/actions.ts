@@ -16,8 +16,7 @@ export async function login(formData: FormData) {
   })
 
   if (error) {
-    // AQUÍ PERSONALIZAMOS EL MENSAJE
-    // Supabase devuelve error genérico por seguridad, pero tú pediste este mensaje específico:
+
     return { error: 'El usuario no está registrado o la contraseña es incorrecta.' }
   }
 

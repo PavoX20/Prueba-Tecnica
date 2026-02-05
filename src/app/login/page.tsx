@@ -19,22 +19,19 @@ export default function LoginPage() {
 
     try {
       if (isRegistering) {
-        // --- LÓGICA DE REGISTRO (SIN ALERTA VISIBLE SI FALLA) ---
+
         if (password !== confirmPassword) {
           toast.error('Las contraseñas no coinciden')
           setLoading(false)
           return
         }
-        
+
         const result = await signup(formData)
-        // Mantenemos comentado el toast aquí para que NO salga la tarjeta roja al registrar
-        // if (result?.error) toast.error(result.error) 
-        
+
       } else {
-        // --- LÓGICA DE LOGIN (CON ALERTA VISIBLE) ---
+
         const result = await login(formData)
-        
-        // AQUÍ SÍ MOSTRAMOS EL ERROR (Usuario no existe / Contraseña mal)
+
         if (result?.error) {
           toast.error(result.error) 
         }
@@ -46,7 +43,6 @@ export default function LoginPage() {
     }
   }
 
-  // Estilos del tema Azul
   const inputClass = "block w-full rounded-lg border-slate-300 py-3 px-4 text-slate-900 placeholder:text-slate-400 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 sm:text-sm sm:leading-6 border bg-slate-50 focus:bg-white outline-none transition-all"
 
   return (
@@ -90,7 +86,7 @@ export default function LoginPage() {
               />
             </div>
 
-            {/* Confirmar contraseña solo en registro */}
+            {}
             {isRegistering && (
               <div className="animate-in fade-in slide-in-from-top-2 duration-300">
                 <label htmlFor="confirmPassword" className="sr-only">Confirmar Contraseña</label>
@@ -118,7 +114,7 @@ export default function LoginPage() {
             </button>
           </div>
 
-          {/* Links de texto para cambiar modo */}
+          {}
           <div className="text-center text-sm mt-4">
             <button
               type="button"
